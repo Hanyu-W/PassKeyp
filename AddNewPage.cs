@@ -10,11 +10,19 @@ using System.Windows.Forms;
 
 namespace PassKeyp
 {
-    public partial class Form1 : Form
+    public partial class AddNewPage : Form
     {
-        public Form1()
+        public AddNewPage()
         {
             InitializeComponent();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            LoginPage myForm = new LoginPage();
+            this.Hide();
+            myForm.ShowDialog();
+            this.Close();
         }
     }
 }
