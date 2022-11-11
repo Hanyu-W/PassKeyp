@@ -11,15 +11,15 @@ using System.Windows.Forms;
 
 namespace PassKeyp
 {
-    public partial class AddNewPage : Form
+    public partial class EditPage : Form
     {
-        public AddNewPage()
+        public EditPage()
         {
             InitializeComponent();
         }
 
         //sends user back to file page
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
             FilePage myForm = new FilePage(FileInfo.Filename);
             this.Hide();
@@ -27,8 +27,8 @@ namespace PassKeyp
             this.Close();
         }
 
-        //sends user back to file page
-        private void btnCreate_Click(object sender, EventArgs e)
+        //sends user ack to file page
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             FilePage myForm = new FilePage(FileInfo.Filename);
             this.Hide();

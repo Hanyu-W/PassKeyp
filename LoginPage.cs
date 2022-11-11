@@ -18,6 +18,7 @@ namespace PassKeyp
             InitializeComponent();
         }
 
+        //allows user to load a file from file explorer
         private void btnFileExplorer_Click(object sender, EventArgs e)
         {
             int size = -1;
@@ -30,6 +31,7 @@ namespace PassKeyp
                 {
                     string text = File.ReadAllText(file);
                     size = text.Length;
+                    this.txtFileLocation.Text = file; // <-- file location is added to text box
                 }
                 catch (IOException)
                 {
@@ -39,9 +41,19 @@ namespace PassKeyp
             Console.WriteLine(result); // <-- For debugging use.
         }
 
+        //sends user to add new page
         private void btnCreateNew_Click(object sender, EventArgs e)
         {
-            AddNewPage myForm = new AddNewPage();
+            CreateNewFile myForm = new CreateNewFile();
+            this.Hide();
+            myForm.ShowDialog();
+            this.Close();
+        }
+
+        //sends user to file page
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            FilePage myForm = new FilePage(txtFileLocation.Text);
             this.Hide();
             myForm.ShowDialog();
             this.Close();

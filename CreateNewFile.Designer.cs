@@ -37,6 +37,8 @@ namespace PassKeyp
             this.btnCancel = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtFileLocation = new System.Windows.Forms.TextBox();
+            this.btnFileExplorer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblCreateNewFile
@@ -82,22 +84,24 @@ namespace PassKeyp
             // btnCreate
             // 
             this.btnCreate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreate.Location = new System.Drawing.Point(471, 251);
+            this.btnCreate.Location = new System.Drawing.Point(535, 274);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(75, 33);
             this.btnCreate.TabIndex = 7;
             this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(253, 251);
+            this.btnCancel.Location = new System.Drawing.Point(240, 274);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 33);
             this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // txtPassword
             // 
@@ -115,11 +119,31 @@ namespace PassKeyp
             this.textBox1.Size = new System.Drawing.Size(367, 33);
             this.textBox1.TabIndex = 10;
             // 
+            // txtFileLocation
+            // 
+            this.txtFileLocation.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFileLocation.Location = new System.Drawing.Point(240, 108);
+            this.txtFileLocation.Name = "txtFileLocation";
+            this.txtFileLocation.Size = new System.Drawing.Size(367, 33);
+            this.txtFileLocation.TabIndex = 12;
+            // 
+            // btnFileExplorer
+            // 
+            this.btnFileExplorer.Location = new System.Drawing.Point(631, 105);
+            this.btnFileExplorer.Name = "btnFileExplorer";
+            this.btnFileExplorer.Size = new System.Drawing.Size(120, 42);
+            this.btnFileExplorer.TabIndex = 11;
+            this.btnFileExplorer.Text = "Open File Explorer";
+            this.btnFileExplorer.UseVisualStyleBackColor = true;
+            this.btnFileExplorer.Click += new System.EventHandler(this.btnFileExplorer_Click);
+            // 
             // CreateNewFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtFileLocation);
+            this.Controls.Add(this.btnFileExplorer);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.btnCancel);
@@ -145,5 +169,7 @@ namespace PassKeyp
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtFileLocation;
+        private System.Windows.Forms.Button btnFileExplorer;
     }
 }
