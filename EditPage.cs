@@ -13,6 +13,8 @@ namespace PassKeyp
 {
     public partial class EditPage : Form
     {
+        Keyp keyp1;
+
         public EditPage()
         {
             InitializeComponent();
@@ -21,7 +23,7 @@ namespace PassKeyp
         //sends user back to file page
         private void btnSave_Click(object sender, EventArgs e)
         {
-            FilePage myForm = new FilePage(FileInfo.Filename);
+            FilePage myForm = new FilePage(Keyp.Filename);
             this.Hide();
             myForm.ShowDialog();
             this.Close();
@@ -30,7 +32,7 @@ namespace PassKeyp
         //sends user ack to file page
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            FilePage myForm = new FilePage(FileInfo.Filename);
+            FilePage myForm = new FilePage(Keyp.Filename);
             this.Hide();
             myForm.ShowDialog();
             this.Close();
@@ -49,14 +51,13 @@ namespace PassKeyp
             this.CenterToScreen();
             this.setControls();
             Label lblEditDataFor = new Label();
-            lblEditDataFor.Text = lblEditDataFor.Text + FileInfo.Filename;
+            lblEditDataFor.Text = "Editing Data For: " + Keyp.Filename;
+            lblEditDataFor.Location = new Point(200, 50);
+            lblEditDataFor.AutoSize = true;
+            lblEditDataFor.Font = new Font("Segoe UI", 24);
+            lblEditDataFor.Padding = new Padding(6);
             this.Controls.Add(lblEditDataFor);
             Console.WriteLine(lblEditDataFor.Text);
-        }
-
-        private void lblEditDataFor_Click(object sender, EventArgs e)
-        {
-            lblEditDataFor.Text = lblEditDataFor.Text + FileInfo.Filename;
         }
     }
 }

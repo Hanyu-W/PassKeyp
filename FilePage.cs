@@ -13,12 +13,13 @@ namespace PassKeyp
 {
     public partial class FilePage : Form
     {
+        Keyp keyp1;
 
-        public FilePage(string filename)
+        public FilePage(Keyp keyp)
         {
             InitializeComponent();
-            FileInfo.Filename = filename;
-            Console.WriteLine(FileInfo.Filename);
+            keyp1 = keyp;
+            Console.WriteLine(keyp1.Filename);
         }
 
         //send user to edit file page
@@ -51,6 +52,13 @@ namespace PassKeyp
         {
             this.CenterToScreen();
             this.setControls();
+            Label lblDataFor = new Label();
+            lblDataFor.Text = "Data For: " + keyp1.Filename;
+            lblDataFor.Location = new Point(250, 50);
+            lblDataFor.AutoSize = true;
+            lblDataFor.Font = new Font("Segoe UI", 24);
+            lblDataFor.Padding = new Padding(6);
+            this.Controls.Add(lblDataFor);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace PassKeyp
         //sends user back to file page
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            FilePage myForm = new FilePage(FileInfo.Filename);
+            FilePage myForm = new FilePage(Keyp.Filename);
             this.Hide();
             myForm.ShowDialog();
             this.Close();
@@ -38,7 +38,7 @@ namespace PassKeyp
         //sends user back to file page
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            FilePage myForm = new FilePage(FileInfo.Filename);
+            FilePage myForm = new FilePage(Keyp.Filename);
             this.Hide();
             myForm.ShowDialog();
             this.Close();

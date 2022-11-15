@@ -29,21 +29,10 @@ namespace PassKeyp
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblDataFor = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAddNew = new System.Windows.Forms.Button();
             this.btnSort = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // lblDataFor
-            // 
-            this.lblDataFor.AutoSize = true;
-            this.lblDataFor.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataFor.Location = new System.Drawing.Point(315, 46);
-            this.lblDataFor.Name = "lblDataFor";
-            this.lblDataFor.Size = new System.Drawing.Size(155, 47);
-            this.lblDataFor.TabIndex = 12;
-            this.lblDataFor.Text = "Data for:";
             // 
             // btnEdit
             // 
@@ -85,18 +74,14 @@ namespace PassKeyp
             this.Controls.Add(this.btnSort);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAddNew);
-            this.Controls.Add(this.lblDataFor);
             this.Name = "FilePage";
             this.Text = "FIlePage";
             this.Load += new System.EventHandler(this.FilePage_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblDataFor;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnAddNew;
         private System.Windows.Forms.Button btnSort;

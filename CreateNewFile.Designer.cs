@@ -36,7 +36,7 @@ namespace PassKeyp
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtFilename = new System.Windows.Forms.TextBox();
             this.txtFileLocation = new System.Windows.Forms.TextBox();
             this.btnFileExplorer = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -111,13 +111,13 @@ namespace PassKeyp
             this.txtPassword.Size = new System.Drawing.Size(367, 33);
             this.txtPassword.TabIndex = 9;
             // 
-            // textBox1
+            // txtFilename
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(240, 160);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(367, 33);
-            this.textBox1.TabIndex = 10;
+            this.txtFilename.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFilename.Location = new System.Drawing.Point(240, 160);
+            this.txtFilename.Name = "txtFilename";
+            this.txtFilename.Size = new System.Drawing.Size(367, 33);
+            this.txtFilename.TabIndex = 10;
             // 
             // txtFileLocation
             // 
@@ -144,7 +144,7 @@ namespace PassKeyp
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.txtFileLocation);
             this.Controls.Add(this.btnFileExplorer);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtFilename);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnCreate);
@@ -169,7 +169,7 @@ namespace PassKeyp
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtFilename;
         private System.Windows.Forms.TextBox txtFileLocation;
         private System.Windows.Forms.Button btnFileExplorer;
     }

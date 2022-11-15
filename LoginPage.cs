@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PassKeyp.Models;
 
 namespace PassKeyp
 {
@@ -53,10 +54,28 @@ namespace PassKeyp
         //sends user to file page
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            FilePage myForm = new FilePage(txtFileLocation.Text);
-            this.Hide();
-            myForm.ShowDialog();
-            this.Close();
+            if(txtFileLocation.Text != "")
+            {
+                string name = txtFileLocation.Text;
+                Keyp keyp1 = new Keyp(txtFileLocation.Text, txtPassword.Text);
+                FilePage myForm = new FilePage(keyp1);
+                this.Hide();
+                myForm.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                Label warning = new Label();
+                warning.Text = "Error! No filename!";
+                warning.Location = new Point(200, 300);
+                warning.AutoSize = true;
+                warning.Font = new Font("Segoe UI", 16);
+                warning.ForeColor = Color.Red;
+                warning.Padding = new Padding(6);
+                this.Controls.Add(warning);
+                Console.WriteLine(warning.Text);
+            }
+            
         }
 
         //Ensures User can't mess with the form

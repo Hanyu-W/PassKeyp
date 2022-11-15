@@ -21,10 +21,25 @@ namespace PassKeyp
         //sends user to file page
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            FilePage myForm = new FilePage(txtFileLocation.Text);
-            this.Hide();
-            myForm.ShowDialog();
-            this.Close();
+            if(txtFilename.Text != "")
+            {
+                FilePage myForm = new FilePage(txtFilename.Text);
+                this.Hide();
+                myForm.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                Label warning = new Label();
+                warning.Text = "Error! No filename!";
+                warning.Location = new Point(200, 400);
+                warning.AutoSize = true;
+                warning.Font = new Font("Segoe UI", 16);
+                warning.ForeColor = Color.Red;
+                warning.Padding = new Padding(6);
+                this.Controls.Add(warning);
+                Console.WriteLine(warning.Text);
+            }
         }
 
         //sends user back to login page

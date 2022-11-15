@@ -29,21 +29,9 @@ namespace PassKeyp
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblEditDataFor = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // lblEditDataFor
-            // 
-            this.lblEditDataFor.AutoSize = true;
-            this.lblEditDataFor.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEditDataFor.Location = new System.Drawing.Point(253, 52);
-            this.lblEditDataFor.Name = "lblEditDataFor";
-            this.lblEditDataFor.Size = new System.Drawing.Size(273, 47);
-            this.lblEditDataFor.TabIndex = 16;
-            this.lblEditDataFor.Text = "Editing Data for:";
-            this.lblEditDataFor.Click += new System.EventHandler(this.lblEditDataFor_Click);
             // 
             // btnSave
             // 
@@ -74,18 +62,14 @@ namespace PassKeyp
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.lblEditDataFor);
             this.Name = "EditPage";
             this.Text = "EditPage";
             this.Load += new System.EventHandler(this.EditPage_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblEditDataFor;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
     }
