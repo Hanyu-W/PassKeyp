@@ -13,7 +13,7 @@ namespace PassKeyp
 {
     public partial class FilePage : Form
     {
-        Keyp keyp1;
+        public Keyp keyp1;
 
         public FilePage(Keyp keyp)
         {

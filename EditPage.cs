@@ -13,8 +13,6 @@ namespace PassKeyp
 {
     public partial class EditPage : Form
     {
-        Keyp keyp1;
-
         public EditPage()
         {
             InitializeComponent();
@@ -23,7 +21,7 @@ namespace PassKeyp
         //sends user back to file page
         private void btnSave_Click(object sender, EventArgs e)
         {
-            FilePage myForm = new FilePage(Keyp.Filename);
+            FilePage myForm = new FilePage(keyp1.Filename);
             this.Hide();
             myForm.ShowDialog();
             this.Close();
