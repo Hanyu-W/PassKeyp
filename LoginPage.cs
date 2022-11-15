@@ -58,5 +58,19 @@ namespace PassKeyp
             myForm.ShowDialog();
             this.Close();
         }
+
+        //Ensures User can't mess with the form
+        private void setControls()
+        {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+        }
+
+        private void LoginPage_Load(object sender, EventArgs e)
+        {
+            this.CenterToScreen();
+            this.setControls();
+        }
     }
 }

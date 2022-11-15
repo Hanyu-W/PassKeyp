@@ -154,6 +154,7 @@ namespace PassKeyp
             this.Controls.Add(this.lblCreateNewFile);
             this.Name = "CreateNewFile";
             this.Text = "CreateNewFile";
+            this.Load += new System.EventHandler(this.CreateNewFile_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -57,5 +57,19 @@ namespace PassKeyp
             Console.WriteLine(size); // <-- Shows file size in debugging mode.
             Console.WriteLine(result); // <-- For debugging use.
         }
+
+        //Ensures User can't mess with the form
+        private void setControls()
+        {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+        }
+
+        private void CreateNewFile_Load(object sender, EventArgs e)
+        {
+            this.CenterToScreen();
+            this.setControls();
+        }
     }
 }

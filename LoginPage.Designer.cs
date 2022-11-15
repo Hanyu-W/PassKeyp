@@ -132,6 +132,7 @@ namespace PassKeyp
             this.Controls.Add(this.btnSubmit);
             this.Name = "LoginPage";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.LoginPage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

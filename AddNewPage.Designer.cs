@@ -142,6 +142,7 @@ namespace PassKeyp
             this.Controls.Add(this.lblAddData);
             this.Name = "AddNewPage";
             this.Text = "AddNewPage";
+            this.Load += new System.EventHandler(this.AddNewPage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

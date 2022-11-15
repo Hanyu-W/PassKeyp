@@ -35,5 +35,28 @@ namespace PassKeyp
             myForm.ShowDialog();
             this.Close();
         }
+
+        //Ensures User can't mess with the form
+        private void setControls()
+        {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+        }
+
+        private void EditPage_Load(object sender, EventArgs e)
+        {
+            this.CenterToScreen();
+            this.setControls();
+            Label lblEditDataFor = new Label();
+            lblEditDataFor.Text = lblEditDataFor.Text + FileInfo.Filename;
+            this.Controls.Add(lblEditDataFor);
+            Console.WriteLine(lblEditDataFor.Text);
+        }
+
+        private void lblEditDataFor_Click(object sender, EventArgs e)
+        {
+            lblEditDataFor.Text = lblEditDataFor.Text + FileInfo.Filename;
+        }
     }
 }

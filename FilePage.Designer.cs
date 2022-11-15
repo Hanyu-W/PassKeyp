@@ -88,6 +88,7 @@ namespace PassKeyp
             this.Controls.Add(this.lblDataFor);
             this.Name = "FilePage";
             this.Text = "FIlePage";
+            this.Load += new System.EventHandler(this.FilePage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -18,6 +18,14 @@ namespace PassKeyp
             InitializeComponent();
         }
 
+        //Ensures User can't mess with the form
+        private void setControls()
+        {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+        }
+
         //sends user back to file page
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -34,6 +42,12 @@ namespace PassKeyp
             this.Hide();
             myForm.ShowDialog();
             this.Close();
+        }
+
+        private void AddNewPage_Load(object sender, EventArgs e)
+        {
+            this.CenterToScreen();
+            this.setControls();
         }
     }
 }

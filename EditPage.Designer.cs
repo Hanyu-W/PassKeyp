@@ -43,6 +43,7 @@ namespace PassKeyp
             this.lblEditDataFor.Size = new System.Drawing.Size(273, 47);
             this.lblEditDataFor.TabIndex = 16;
             this.lblEditDataFor.Text = "Editing Data for:";
+            this.lblEditDataFor.Click += new System.EventHandler(this.lblEditDataFor_Click);
             // 
             // btnSave
             // 
@@ -76,6 +77,7 @@ namespace PassKeyp
             this.Controls.Add(this.lblEditDataFor);
             this.Name = "EditPage";
             this.Text = "EditPage";
+            this.Load += new System.EventHandler(this.EditPage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
