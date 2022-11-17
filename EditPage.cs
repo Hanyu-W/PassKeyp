@@ -43,7 +43,8 @@ namespace PassKeyp
             this.MaximizeBox = false;
             this.MinimizeBox = false;
         }
-
+        
+        //changes the title of the app to match the name of the file
         private void EditPage_Load(object sender, EventArgs e)
         {
             this.CenterToScreen();
