@@ -102,5 +102,56 @@ namespace PassKeyp
         {
             
         }
+
+        private List<Login> Merge(List<Login> array, Login left, Login right)
+        {
+            if(left.Website.CompareTo(right.Website) < 0)
+            {
+                int middle = array.Count / 2;
+                int rightmiddle = middle + 1;
+                Login mid = array[middle];
+                Login rightmid = array[rightmiddle];
+                Merge(array, left, mid);
+                Merge(array, rightmid, right);
+                Mergesort(array, left, mid, right);   
+            }
+            return array;
+
+        }
+        public void Mergesort(List<Login> array, Login left, Login middle, Login right)
+        {
+            var leftArrayLength = array.IndexOf(middle) - array.IndexOf(left) + 1;
+            var rightArrayLength = right - middle;
+            var leftTempArray = new int[leftArrayLength];
+            var rightTempArray = new int[rightArrayLength];
+            int i, j;
+            for (i = 0; i < leftArrayLength; ++i)
+                leftTempArray[i] = array[left + i];
+            for (j = 0; j < rightArrayLength; ++j)
+                rightTempArray[j] = array[middle + 1 + j];
+            i = 0;
+            j = 0;
+            int k = left;
+            while (i < leftArrayLength && j < rightArrayLength)
+            {
+                if (leftTempArray[i] <= rightTempArray[j])
+                {
+                    array[k++] = leftTempArray[i++];
+                }
+                else
+                {
+                    array[k++] = rightTempArray[j++];
+                }
+            }
+            while (i < leftArrayLength)
+            {
+                array[k++] = leftTempArray[i++];
+            }
+            while (j < rightArrayLength)
+            {
+                array[k++] = rightTempArray[j++];
+            }
+        }
+
     }
 }
