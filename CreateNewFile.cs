@@ -73,20 +73,9 @@ namespace PassKeyp
         private void btnFileExplorer_Click(object sender, EventArgs e)
         {
             int size = -1;
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
-            if (result == DialogResult.OK) // Test result.
-            {
-                string file = openFileDialog1.FileName;
-                try
-                {
-                    string text = File.ReadAllText(file);
-                    size = text.Length;
-                }
-                catch (IOException)
-                {
-                }
-            }
+            FolderBrowserDialog openFolderDialog1 = new FolderBrowserDialog();
+            DialogResult result = openFolderDialog1.ShowDialog(); // Show the dialog.
+            txtFileLocation.Text = openFolderDialog1.SelectedPath;
             Console.WriteLine(size); // <-- Shows file size in debugging mode.
             Console.WriteLine(result); // <-- For debugging use.
         }
