@@ -21,7 +21,8 @@ namespace PassKeyp
         //sends user back to file page
         private void btnSave_Click(object sender, EventArgs e)
         {
-            FilePage myForm = new FilePage(keyp1.Filename);
+            
+            FilePage myForm = new FilePage(Keyp.Filename,Keyp.Password);
             this.Hide();
             myForm.ShowDialog();
             this.Close();
@@ -30,7 +31,7 @@ namespace PassKeyp
         //sends user ack to file page
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            FilePage myForm = new FilePage(Keyp.Filename);
+            FilePage myForm = new FilePage(Keyp.Filename,Keyp.Password);
             this.Hide();
             myForm.ShowDialog();
             this.Close();

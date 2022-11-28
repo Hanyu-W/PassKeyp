@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PassKeyp.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 namespace PassKeyp
 {
     public partial class CreateNewFile : Form
-    {
+    { 
         public CreateNewFile()
         {
             InitializeComponent();
@@ -21,24 +22,41 @@ namespace PassKeyp
         //sends user to file page
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            if(txtFilename.Text != "")
+            //if all fields are filled in, create new file
+            if(txtFilename.Text != "" && txtPassword.Text != "")
             {
-                FilePage myForm = new FilePage(txtFilename.Text);
+                FilePage myForm = new FilePage(txtFilename.Text, txtPassword.Text);
                 this.Hide();
                 myForm.ShowDialog();
                 this.Close();
             }
-            else
+
+            //if no filename, give error
+            if(txtFilename.Text == "")
             {
-                Label warning = new Label();
-                warning.Text = "Error! No filename!";
-                warning.Location = new Point(200, 400);
-                warning.AutoSize = true;
-                warning.Font = new Font("Segoe UI", 16);
-                warning.ForeColor = Color.Red;
-                warning.Padding = new Padding(6);
-                this.Controls.Add(warning);
-                Console.WriteLine(warning.Text);
+                Label Filenamewarning = new Label();
+                Filenamewarning.Text = "Error! No filename!";
+                Filenamewarning.Location = new Point(200, 400);
+                Filenamewarning.AutoSize = true;
+                Filenamewarning.Font = new Font("Segoe UI", 16);
+                Filenamewarning.ForeColor = Color.Red;
+                Filenamewarning.Padding = new Padding(6);
+                this.Controls.Add(Filenamewarning);
+                Console.WriteLine(Filenamewarning.Text);
+            }
+
+            //if no password, give error
+            if (txtPassword.Text == "")
+            {
+                Label Passwordwarning = new Label();
+                Passwordwarning.Text = "Error! No Password!";
+                Passwordwarning.Location = new Point(400, 400);
+                Passwordwarning.AutoSize = true;
+                Passwordwarning.Font = new Font("Segoe UI", 16);
+                Passwordwarning.ForeColor = Color.Red;
+                Passwordwarning.Padding = new Padding(6);
+                this.Controls.Add(Passwordwarning);
+                Console.WriteLine(Passwordwarning.Text);
             }
         }
 

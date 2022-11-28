@@ -57,8 +57,7 @@ namespace PassKeyp
             if(txtFileLocation.Text != "")
             {
                 string name = txtFileLocation.Text;
-                Keyp keyp1 = new Keyp(txtFileLocation.Text, txtPassword.Text);
-                FilePage myForm = new FilePage(keyp1);
+                FilePage myForm = new FilePage(txtFileLocation.Text, txtPassword.Text);
                 this.Hide();
                 myForm.ShowDialog();
                 this.Close();
