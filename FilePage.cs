@@ -100,20 +100,19 @@ namespace PassKeyp
 
         private void btnSort_Click(object sender, EventArgs e)
         {
-            
+            Logins = Merge(Logins, Logins[0], Logins[Logins.Count - 1]);
+            this.PopulateLogins();
         }
 
-        private List<Login> Merge(List<Login> array, Login left, Login right)
+        public List<Login> Merge(List<Login> array, Login left, Login right)
         {
-            if(left.Website.CompareTo(right.Website) < 0)
+            if (array.IndexOf(left) < array.IndexOf(right))
             {
-                int middle = array.Count / 2;
-                int rightmiddle = middle + 1;
-                Login mid = array[middle];
-                Login rightmid = array[rightmiddle];
-                Merge(array, left, mid);
-                Merge(array, rightmid, right);
-                Mergesort(array, left, mid, right);   
+                int middle = array.IndexOf(left) + (array.IndexOf(right) - array.IndexOf(left)) / 2;
+                Console.WriteLine(middle);
+                Merge(array, left, array[middle]);
+                Merge(array, array[middle + 1], right);
+                Mergesort(array, left, array[middle], right);
             }
             return array;
 
@@ -121,20 +120,22 @@ namespace PassKeyp
         public void Mergesort(List<Login> array, Login left, Login middle, Login right)
         {
             var leftArrayLength = array.IndexOf(middle) - array.IndexOf(left) + 1;
-            var rightArrayLength = right - middle;
-            var leftTempArray = new int[leftArrayLength];
-            var rightTempArray = new int[rightArrayLength];
+            var rightArrayLength = array.IndexOf(right) - array.IndexOf(middle);
+            Console.WriteLine(leftArrayLength);
+            Console.WriteLine(rightArrayLength);
+            var leftTempArray = new Login[leftArrayLength];
+            var rightTempArray = new Login[rightArrayLength];
             int i, j;
             for (i = 0; i < leftArrayLength; ++i)
-                leftTempArray[i] = array[left + i];
+                leftTempArray[i] = array[array.IndexOf(left) + i];
             for (j = 0; j < rightArrayLength; ++j)
-                rightTempArray[j] = array[middle + 1 + j];
+                rightTempArray[j] = array[array.IndexOf(middle) + 1 + j];
             i = 0;
             j = 0;
-            int k = left;
+            int k = array.IndexOf(left);
             while (i < leftArrayLength && j < rightArrayLength)
             {
-                if (leftTempArray[i] <= rightTempArray[j])
+                if (leftTempArray[i].Website.Trim().CompareTo(rightTempArray[j].Website.Trim()) <= 0)
                 {
                     array[k++] = leftTempArray[i++];
                 }
@@ -150,6 +151,10 @@ namespace PassKeyp
             while (j < rightArrayLength)
             {
                 array[k++] = rightTempArray[j++];
+            }
+            foreach (var a in array)
+            {
+                Console.WriteLine(a.Website);
             }
         }
 

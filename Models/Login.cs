@@ -30,9 +30,9 @@ namespace PassKeyp.Models
         {
             return new List<Login>
             {
-               new Login("Customer 1", "fdsfjkdsl", "dsfsdf"),
+               new Login("Test 1", "fdsfjkdsl", "dsfsdf"),
                new Login("Customer 2", "dsfjdsj", "fdsfds"),
-               new Login("Customer 3", "sdfsdfsd", "dsfdsfds")
+               new Login("Brian", "sdfsdfsd", "dsfdsfds")
             };
         }
 
