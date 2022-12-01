@@ -138,6 +138,14 @@ namespace PassKeyp
         {
             this.CenterToScreen();
             this.setControls();
+            //creates title and updates it based on the name of the file
+            Label lblDataFor = new Label();
+            lblDataFor.Text = "Data For: " + Keyp.Filename;
+            lblDataFor.Location = new Point(250, 20);
+            lblDataFor.AutoSize = true;
+            lblDataFor.Font = new Font("Segoe UI", 24);
+            lblDataFor.Padding = new Padding(6);
+            this.Controls.Add(lblDataFor);
         }
     }
 }
