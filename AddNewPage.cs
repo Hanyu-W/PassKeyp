@@ -100,10 +100,6 @@ namespace PassKeyp
                 this.Close();
             }
 
-            //*bug
-            //it doesn't remove the label when
-            //the error is fixed
-            //why??????????????
             //if no filename, give error
             if (txtWebsite.Text.Trim() == "")
             {
