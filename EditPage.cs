@@ -13,6 +13,8 @@ namespace PassKeyp
 {
     public partial class EditPage : Form
     {
+        public List<Login> Logins;
+
         public EditPage()
         {
             InitializeComponent();
@@ -21,19 +23,12 @@ namespace PassKeyp
         //sends user back to file page
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
-            FilePage myForm = new FilePage(Keyp.Filename,Keyp.Password);
-            this.Hide();
-            myForm.ShowDialog();
             this.Close();
         }
 
-        //sends user ack to file page
+        //sends user back to file page
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            FilePage myForm = new FilePage(Keyp.Filename,Keyp.Password);
-            this.Hide();
-            myForm.ShowDialog();
             this.Close();
         }
 
@@ -45,14 +40,14 @@ namespace PassKeyp
             this.MinimizeBox = false;
         }
         
-        //changes the title of the app to match the name of the file
         private void EditPage_Load(object sender, EventArgs e)
         {
             this.CenterToScreen();
             this.setControls();
+            //changes the title of the app to match the name of the file
             Label lblEditDataFor = new Label();
             lblEditDataFor.Text = "Editing Data For: " + Keyp.Filename;
-            lblEditDataFor.Location = new Point(200, 50);
+            lblEditDataFor.Location = new Point(250, 20);
             lblEditDataFor.AutoSize = true;
             lblEditDataFor.Font = new Font("Segoe UI", 24);
             lblEditDataFor.Padding = new Padding(6);
