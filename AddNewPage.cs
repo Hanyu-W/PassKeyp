@@ -104,11 +104,12 @@ namespace PassKeyp
             if (txtWebsite.Text.Trim() == "")
             {
                 Websitewarning.Visible = true;
-                Console.WriteLine(Websitewarning.Text);
+                Console.WriteLine("lmao");
             }
             else if(txtWebsite.Text.Trim() != "")
             {
                 Websitewarning.Visible = false;
+                Console.WriteLine("these");
             }
 
             //if no username, give error
