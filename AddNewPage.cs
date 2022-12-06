@@ -40,6 +40,7 @@ namespace PassKeyp
         //sends user back to file page
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            //no change
             this.Close();
         }
 
@@ -97,6 +98,7 @@ namespace PassKeyp
 
                 //Event declared above
                 UpdateLogins(this, args);
+                //sends us back to filepage
                 this.Close();
             }
 

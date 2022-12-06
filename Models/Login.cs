@@ -26,6 +26,7 @@ namespace PassKeyp.Models
             Password = password;
         }
 
+        //sample list of logins
         public static List<Login> GetLogins()
         {
             return new List<Login>

@@ -9,7 +9,7 @@ namespace PassKeyp.Events
 {
     public class UpdateLoginEventArgs : EventArgs
     {
-        //ArrayList
+        //ArrayList of the logins
         private List<Login> logins = new List<Login>();
 
         public UpdateLoginEventArgs(List<Login> c)
