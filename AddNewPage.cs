@@ -40,6 +40,7 @@ namespace PassKeyp
         //sends user back to file page
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            //no change
             this.Close();
         }
 
@@ -97,6 +98,7 @@ namespace PassKeyp
 
                 //Event declared above
                 UpdateLogins(this, args);
+                //sends us back to filepage
                 this.Close();
             }
 
@@ -104,11 +106,12 @@ namespace PassKeyp
             if (txtWebsite.Text.Trim() == "")
             {
                 Websitewarning.Visible = true;
-                Console.WriteLine(Websitewarning.Text);
+                Console.WriteLine("lmao");
             }
             else if(txtWebsite.Text.Trim() != "")
             {
                 Websitewarning.Visible = false;
+                Console.WriteLine("these");
             }
 
             //if no username, give error
