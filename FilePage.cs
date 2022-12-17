@@ -27,9 +27,7 @@ namespace PassKeyp
         private void btnEdit_Click(object sender, EventArgs e)
         {
             EditPage myForm = new EditPage();
-            this.Hide();
             myForm.ShowDialog();
-            this.Close();
         }
 
         //sends user to add new page

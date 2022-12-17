@@ -21,19 +21,12 @@ namespace PassKeyp
         //sends user back to file page
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
-            FilePage myForm = new FilePage(Keyp.Filename,Keyp.Password);
-            this.Hide();
-            myForm.ShowDialog();
             this.Close();
         }
 
-        //sends user ack to file page
+        //sends user back to file page
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            FilePage myForm = new FilePage(Keyp.Filename,Keyp.Password);
-            this.Hide();
-            myForm.ShowDialog();
             this.Close();
         }
 
@@ -52,7 +45,7 @@ namespace PassKeyp
             this.setControls();
             Label lblEditDataFor = new Label();
             lblEditDataFor.Text = "Editing Data For: " + Keyp.Filename;
-            lblEditDataFor.Location = new Point(200, 50);
+            lblEditDataFor.Location = new Point(200, 20);
             lblEditDataFor.AutoSize = true;
             lblEditDataFor.Font = new Font("Segoe UI", 24);
             lblEditDataFor.Padding = new Padding(6);
