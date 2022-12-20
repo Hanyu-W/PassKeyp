@@ -27,6 +27,7 @@ namespace PassKeyp
         private void btnEdit_Click(object sender, EventArgs e)
         {
             EditPage myForm = new EditPage();
+            myForm.Logins = this.Logins;
             myForm.ShowDialog();
         }
 
