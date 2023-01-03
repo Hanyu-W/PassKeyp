@@ -16,11 +16,12 @@ namespace PassKeyp
     {
         public List<Login> Logins = new List<Login>();
 
-        public FilePage(string filename, string password)
+        public FilePage(string filename, string password, List<Login> logins)
         {
             InitializeComponent();
             Keyp.Filename = filename;
             Console.WriteLine();
+            this.Logins = logins;
         }
 
         //send user to edit file page
@@ -68,7 +69,10 @@ namespace PassKeyp
             lblDataFor.Font = new Font("Segoe UI", 24);
             lblDataFor.Padding = new Padding(6);
             this.Controls.Add(lblDataFor);
-            Logins = Login.GetLogins();
+            if(Logins.Count == 0)
+            {
+                Logins = Login.GetLogins();
+            }
             Console.WriteLine(Logins);
             this.PopulateLogins();
         }

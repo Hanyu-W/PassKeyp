@@ -13,7 +13,9 @@ using System.Windows.Forms;
 namespace PassKeyp
 {
     public partial class CreateNewFile : Form
-    { 
+    {
+        public List<Login> Logins = new List<Login>();
+
         public CreateNewFile()
         {
             InitializeComponent();
@@ -25,7 +27,7 @@ namespace PassKeyp
             //if all fields are filled in, create new file
             if(txtFilename.Text != "" && txtPassword.Text != "")
             {
-                FilePage myForm = new FilePage(txtFilename.Text, txtPassword.Text);
+                FilePage myForm = new FilePage(txtFilename.Text, txtPassword.Text, Logins);
                 this.Hide();
                 myForm.ShowDialog();
                 this.Close();

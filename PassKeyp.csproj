@@ -64,6 +64,7 @@
     <Compile Include="EditPage.Designer.cs">
       <DependentUpon>EditPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Events\UpdateDataGridViewEventArgs.cs" />
     <Compile Include="Events\UpdateLoginEventArgs.cs" />
     <Compile Include="FilePage.cs">
       <SubType>Form</SubType>
@@ -79,6 +80,8 @@
     </Compile>
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Keyp.cs" />
+    <Compile Include="Processes\TextFileInputOutput.cs" />
+    <Compile Include="Processes\DataSetTableFunctions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddNewPage.resx">
@@ -117,6 +120,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dbase\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

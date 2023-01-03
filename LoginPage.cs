@@ -8,12 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HowTo.Processes;
 using PassKeyp.Models;
 
 namespace PassKeyp
 {
     public partial class LoginPage : Form
     {
+        public List<Login> Logins = new List<Login>();
+
         public LoginPage()
         {
             InitializeComponent();
@@ -57,7 +60,8 @@ namespace PassKeyp
             if(txtFileLocation.Text != "")
             {
                 string name = txtFileLocation.Text;
-                FilePage myForm = new FilePage(txtFileLocation.Text, txtPassword.Text);
+                Logins = TextFileInputOutput.GetData(name);
+                FilePage myForm = new FilePage(txtFileLocation.Text, txtPassword.Text, Logins);
                 this.Hide();
                 myForm.ShowDialog();
                 this.Close();
