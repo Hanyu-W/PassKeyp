@@ -63,7 +63,7 @@ namespace HowTo.Processes
                 {
                     foreach (var d in data)
                     {
-                        //writer.WriteLine(d.Person.ToString());
+                        writer.WriteLine(d.ToString());
                     }
                 }
             }

@@ -27,7 +27,9 @@ namespace PassKeyp
             //if all fields are filled in, create new file
             if(txtFilename.Text != "" && txtPassword.Text != "")
             {
-                FilePage myForm = new FilePage(txtFilename.Text, txtPassword.Text, Logins);
+                string path = txtFileLocation.Text + "\\" + txtFilename.Text + ".txt";
+                using (StreamWriter sw = File.CreateText(path));
+                FilePage myForm = new FilePage(path, txtPassword.Text, Logins);
                 this.Hide();
                 myForm.ShowDialog();
                 this.Close();

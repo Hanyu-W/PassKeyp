@@ -10,6 +10,8 @@ namespace PassKeyp.Models
     {
         public static string Filename { get; set; }
 
+        public static string Pathname { get; set; }
+
         public static string Password { get; set; }
 
     }

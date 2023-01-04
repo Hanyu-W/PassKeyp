@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HowTo.Processes;
 using PassKeyp.Events;
 using PassKeyp.Models;
 
@@ -16,10 +17,11 @@ namespace PassKeyp
     {
         public List<Login> Logins = new List<Login>();
 
-        public FilePage(string filename, string password, List<Login> logins)
+        public FilePage(string filepath, string password, List<Login> logins)
         {
             InitializeComponent();
-            Keyp.Filename = filename;
+            Keyp.Pathname = filepath;
+            Keyp.Filename = filepath.Substring(filepath.LastIndexOf("\\")+1);
             Console.WriteLine();
             this.Logins = logins;
         }
@@ -172,5 +174,9 @@ namespace PassKeyp
             }
         }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            TextFileInputOutput.ExportDataToTextFile(Logins, Keyp.Pathname);
+        }
     }
 }

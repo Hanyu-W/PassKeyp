@@ -37,5 +37,10 @@ namespace PassKeyp.Models
             };
         }
 
+        public string ToString()
+        {
+            return Website + " " + Username + " " + Password;
+        }
+
     }
 }
