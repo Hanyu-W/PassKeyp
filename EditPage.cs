@@ -58,6 +58,20 @@ namespace PassKeyp
             lblEditDataFor.Padding = new Padding(6);
             this.Controls.Add(lblEditDataFor);
             Console.WriteLine(lblEditDataFor.Text);
+            grdData.Columns.Add("Website", "Website");
+            grdData.Columns.Add("Username", "Username");
+            grdData.Columns.Add("Password", "Password");
+            //Use LINQ to get logins from the Login
+            var websites = (from c in Logins select c.Website).ToList();
+            Console.WriteLine(websites.ToString());
+            //Set the DataSource of the listbox to the logins  collection
+            this.grdData.DataSource = websites;
+
+            var usernames = (from c in Logins select c.Username).ToList();
+           // this.lstUsernames.DataSource = usernames;
+
+            var passwords = (from c in Logins select c.Password).ToList();
+            //this.lstPasswords.DataSource = passwords;
         }
 
         private void PopulateDataGridView(object sender, UpdateDataGridViewEventArgs e)
