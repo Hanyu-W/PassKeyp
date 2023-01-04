@@ -178,5 +178,16 @@ namespace PassKeyp
         {
             TextFileInputOutput.ExportDataToTextFile(Logins, Keyp.Pathname);
         }
+
+        private void lstWebsites_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstWebsites.SelectedIndex == -1)
+            {
+                return;
+            }
+
+            Console.WriteLine("jdlfsdjf");
+            Console.WriteLine(lstWebsites.SelectedIndex);
+        }
     }
 }
