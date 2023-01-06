@@ -17,10 +17,16 @@ namespace PassKeyp
     {
         public List<Login> Logins = new List<Login>();
 
+        public int opentimes = 0;
+
+        public int previousWebsiteIndex;
+
         public FilePage(string filepath, string password, List<Login> logins)
         {
             InitializeComponent();
             Keyp.Pathname = filepath;
+            //Gets the name of the file by taking the 
+            //part of the path after the last backslash
             Keyp.Filename = filepath.Substring(filepath.LastIndexOf("\\")+1);
             Console.WriteLine();
             this.Logins = logins;
@@ -29,9 +35,9 @@ namespace PassKeyp
         //send user to edit file page
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            EditPage myForm = new EditPage();
-            myForm.Logins = this.Logins;
-            myForm.ShowDialog();
+            //EditPage myForm = new EditPage();
+            //myForm.Logins = this.Logins;
+            //myForm.ShowDialog();
         }
 
         //sends user to add new page
@@ -181,13 +187,28 @@ namespace PassKeyp
 
         private void lstWebsites_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lstWebsites.SelectedIndex == -1)
+            if (lstWebsites.SelectedIndex == -1 || opentimes == 0)
             {
+                opentimes++;
+                previousWebsiteIndex = lstWebsites.SelectedIndex;
                 return;
             }
 
-            Console.WriteLine("jdlfsdjf");
+            else if(previousWebsiteIndex == lstWebsites.SelectedIndex)
+            {
+                return;
+            }
+            previousWebsiteIndex = lstWebsites.SelectedIndex;
+
             Console.WriteLine(lstWebsites.SelectedIndex);
+            Console.WriteLine(this.Logins[lstWebsites.SelectedIndex].ToString());
+
+            //send user to edit page
+            EditPage myForm = new EditPage(this.Logins[lstWebsites.SelectedIndex]);
+            myForm.Logins = this.Logins;
+            myForm.ShowDialog();
+            PopulateLogins();
+
         }
     }
 }
