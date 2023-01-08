@@ -64,6 +64,7 @@ namespace HowTo.Processes
                     foreach (var d in data)
                     {
                         writer.WriteLine(d.ToString());
+                        Console.WriteLine(d.ToString());
                     }
                 }
             }

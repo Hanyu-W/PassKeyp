@@ -21,6 +21,10 @@ namespace PassKeyp
 
         public int previousWebsiteIndex;
 
+        public int previousUsernameIndex;
+
+        public int previousPasswordIndex;
+
         public FilePage(string filepath, string password, List<Login> logins)
         {
             InitializeComponent();
@@ -55,6 +59,11 @@ namespace PassKeyp
 
             myForm.ShowDialog();
             PopulateLogins();
+
+
+            lstWebsites.SelectedIndex = -1;
+            lstUsernames.SelectedIndex = -1;
+            lstPasswords.SelectedIndex = -1;
         }
 
         //Ensures User can't mess with the form
@@ -83,6 +92,12 @@ namespace PassKeyp
             }
             Console.WriteLine(Logins);
             this.PopulateLogins();
+            lstWebsites.SelectedIndex = -1;
+            lstUsernames.SelectedIndex = -1;
+            lstPasswords.SelectedIndex = -1;
+            previousWebsiteIndex = 1;
+            previousUsernameIndex = 1;
+            previousPasswordIndex = 1;
         }
 
         private void PopulateLogins()
@@ -117,6 +132,10 @@ namespace PassKeyp
 
             //list box is updated with correctly sorted array of logins
             this.PopulateLogins();
+
+            lstWebsites.SelectedIndex = -1;
+            lstUsernames.SelectedIndex = -1;
+            lstPasswords.SelectedIndex = -1;
         }
 
         //implements merge sort
@@ -182,13 +201,24 @@ namespace PassKeyp
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            lstUsernames.Enabled = false;
+            lstPasswords.Enabled = false;
+            lstWebsites.Enabled = false;
+            foreach(Login o in Logins)
+            {
+                Console.WriteLine(o.ToString());
+            }
             TextFileInputOutput.ExportDataToTextFile(Logins, Keyp.Pathname);
+            lstUsernames.Enabled = true;
+            lstPasswords.Enabled = true;
+            lstWebsites.Enabled = true;
         }
 
         private void lstWebsites_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstWebsites.SelectedIndex == -1 || opentimes == 0)
             {
+                Console.WriteLine("One");
                 opentimes++;
                 previousWebsiteIndex = lstWebsites.SelectedIndex;
                 return;
@@ -196,19 +226,122 @@ namespace PassKeyp
 
             else if(previousWebsiteIndex == lstWebsites.SelectedIndex)
             {
+                Console.WriteLine("Two");
+                return;
+            }
+            else if (opentimes > 4)
+            {
+                Console.WriteLine("Three");
+                Console.WriteLine(opentimes);
+                opentimes = 0;
+                return;
+            }
+
+            else if(lstWebsites.SelectedIndex == lstUsernames.SelectedIndex || lstWebsites.SelectedIndex == lstPasswords.SelectedIndex)
+            {
+                Console.WriteLine("Four");
                 return;
             }
             previousWebsiteIndex = lstWebsites.SelectedIndex;
+            opentimes++;
 
-            Console.WriteLine(lstWebsites.SelectedIndex);
-            Console.WriteLine(this.Logins[lstWebsites.SelectedIndex].ToString());
+            Console.WriteLine("five");
+            Console.WriteLine(opentimes);
+            //Console.WriteLine(lstWebsites.SelectedIndex);
+            //Console.WriteLine(this.Logins[lstWebsites.SelectedIndex].ToString());
+
 
             //send user to edit page
             EditPage myForm = new EditPage(this.Logins[lstWebsites.SelectedIndex]);
             myForm.Logins = this.Logins;
+            myForm.UpdateLogins += new EditPage.LoginHandler(LoginsUpdate);
             myForm.ShowDialog();
-            PopulateLogins();
+            this.PopulateLogins();
+            lstWebsites.SelectedIndex = -1;
+            lstUsernames.SelectedIndex = -1;
+            lstPasswords.SelectedIndex = -1;
+        }
 
+        private void lstUsernames_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstUsernames.SelectedIndex == -1 || opentimes == 0)
+            {
+                opentimes++;
+                previousUsernameIndex = lstUsernames.SelectedIndex;
+                return;
+            }
+
+            else if (previousUsernameIndex == lstUsernames.SelectedIndex)
+            {
+                return;
+            }
+            else if (opentimes > 4)
+            {
+                opentimes = 0;
+                return;
+            }
+            else if(lstUsernames.SelectedIndex == lstWebsites.SelectedIndex || lstUsernames.SelectedIndex == lstPasswords.SelectedIndex)
+            {
+                return;
+            }
+            previousUsernameIndex = lstUsernames.SelectedIndex;
+            opentimes++;
+
+            Console.WriteLine(lstUsernames.SelectedIndex);
+            Console.WriteLine(this.Logins[lstUsernames.SelectedIndex].ToString());
+
+
+            //send user to edit page
+            EditPage myForm = new EditPage(this.Logins[lstUsernames.SelectedIndex]);
+            myForm.Logins = this.Logins;
+            myForm.UpdateLogins += new EditPage.LoginHandler(LoginsUpdate);
+            myForm.ShowDialog();
+            this.PopulateLogins();
+            lstWebsites.SelectedIndex = -1;
+            lstUsernames.SelectedIndex = -1;
+            lstPasswords.SelectedIndex = -1;
+        }
+
+        private void lstPasswords_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstPasswords.SelectedIndex == -1 || opentimes == 0)
+            {
+                opentimes++;
+                previousPasswordIndex = lstPasswords.SelectedIndex;
+                return;
+            }
+
+            else if (previousPasswordIndex == lstPasswords.SelectedIndex)
+            {
+                return;
+            }
+
+            else if (opentimes > 4)
+            {
+                opentimes = 0;
+                return;
+            }
+
+            else if (lstPasswords.SelectedIndex == lstUsernames.SelectedIndex || lstPasswords.SelectedIndex == lstWebsites.SelectedIndex)
+            {
+                return;
+            }
+            previousPasswordIndex = lstPasswords.SelectedIndex;
+            opentimes++;
+
+            Console.WriteLine(lstPasswords.SelectedIndex);
+            Console.WriteLine(this.Logins[lstPasswords.SelectedIndex].ToString());
+
+
+            //send user to edit page
+            EditPage myForm = new EditPage(this.Logins[lstPasswords.SelectedIndex]);
+            myForm.Logins = this.Logins;
+            myForm.UpdateLogins += new EditPage.LoginHandler(LoginsUpdate);
+            myForm.ShowDialog();
+            this.PopulateLogins();
+            lstWebsites.SelectedIndex = -1;
+            lstUsernames.SelectedIndex = -1;
+            lstPasswords.SelectedIndex = -1;
         }
     }
 }

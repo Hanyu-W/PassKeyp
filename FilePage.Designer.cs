@@ -29,7 +29,6 @@ namespace PassKeyp
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnEdit = new System.Windows.Forms.Button();
             this.btnAddNew = new System.Windows.Forms.Button();
             this.btnSort = new System.Windows.Forms.Button();
             this.lstWebsites = new System.Windows.Forms.ListBox();
@@ -41,23 +40,13 @@ namespace PassKeyp
             this.btnSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btnEdit
-            // 
-            this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(96, 393);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 33);
-            this.btnEdit.TabIndex = 14;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
             // btnAddNew
             // 
             this.btnAddNew.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddNew.Location = new System.Drawing.Point(607, 393);
+            this.btnAddNew.Location = new System.Drawing.Point(1214, 756);
+            this.btnAddNew.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(99, 33);
+            this.btnAddNew.Size = new System.Drawing.Size(198, 63);
             this.btnAddNew.TabIndex = 13;
             this.btnAddNew.Text = "Add New";
             this.btnAddNew.UseVisualStyleBackColor = true;
@@ -66,9 +55,10 @@ namespace PassKeyp
             // btnSort
             // 
             this.btnSort.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSort.Location = new System.Drawing.Point(461, 393);
+            this.btnSort.Location = new System.Drawing.Point(696, 756);
+            this.btnSort.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnSort.Name = "btnSort";
-            this.btnSort.Size = new System.Drawing.Size(99, 33);
+            this.btnSort.Size = new System.Drawing.Size(198, 63);
             this.btnSort.TabIndex = 15;
             this.btnSort.Text = "Sort";
             this.btnSort.UseVisualStyleBackColor = true;
@@ -79,11 +69,11 @@ namespace PassKeyp
             this.lstWebsites.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.lstWebsites.FormattingEnabled = true;
             this.lstWebsites.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.lstWebsites.ItemHeight = 24;
-            this.lstWebsites.Location = new System.Drawing.Point(87, 103);
-            this.lstWebsites.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lstWebsites.ItemHeight = 42;
+            this.lstWebsites.Location = new System.Drawing.Point(174, 198);
+            this.lstWebsites.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lstWebsites.Name = "lstWebsites";
-            this.lstWebsites.Size = new System.Drawing.Size(166, 244);
+            this.lstWebsites.Size = new System.Drawing.Size(328, 466);
             this.lstWebsites.TabIndex = 17;
             this.lstWebsites.SelectedIndexChanged += new System.EventHandler(this.lstWebsites_SelectedIndexChanged);
             // 
@@ -92,32 +82,34 @@ namespace PassKeyp
             this.lstUsernames.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.lstUsernames.FormattingEnabled = true;
             this.lstUsernames.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.lstUsernames.ItemHeight = 24;
-            this.lstUsernames.Location = new System.Drawing.Point(257, 103);
-            this.lstUsernames.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lstUsernames.ItemHeight = 42;
+            this.lstUsernames.Location = new System.Drawing.Point(514, 198);
+            this.lstUsernames.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lstUsernames.Name = "lstUsernames";
-            this.lstUsernames.Size = new System.Drawing.Size(303, 244);
+            this.lstUsernames.Size = new System.Drawing.Size(602, 466);
             this.lstUsernames.TabIndex = 17;
+            this.lstUsernames.SelectedIndexChanged += new System.EventHandler(this.lstUsernames_SelectedIndexChanged);
             // 
             // lstPasswords
             // 
             this.lstPasswords.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.lstPasswords.FormattingEnabled = true;
-            this.lstPasswords.ItemHeight = 24;
-            this.lstPasswords.Location = new System.Drawing.Point(566, 105);
-            this.lstPasswords.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lstPasswords.ItemHeight = 42;
+            this.lstPasswords.Location = new System.Drawing.Point(1132, 202);
+            this.lstPasswords.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lstPasswords.Name = "lstPasswords";
-            this.lstPasswords.Size = new System.Drawing.Size(158, 244);
+            this.lstPasswords.Size = new System.Drawing.Size(312, 466);
             this.lstPasswords.TabIndex = 18;
+            this.lstPasswords.SelectedIndexChanged += new System.EventHandler(this.lstPasswords_SelectedIndexChanged);
             // 
             // lblWebsites
             // 
             this.lblWebsites.AutoSize = true;
             this.lblWebsites.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblWebsites.Location = new System.Drawing.Point(111, 72);
-            this.lblWebsites.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblWebsites.Location = new System.Drawing.Point(222, 138);
+            this.lblWebsites.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblWebsites.Name = "lblWebsites";
-            this.lblWebsites.Size = new System.Drawing.Size(87, 24);
+            this.lblWebsites.Size = new System.Drawing.Size(177, 44);
             this.lblWebsites.TabIndex = 19;
             this.lblWebsites.Text = "Websites";
             // 
@@ -125,10 +117,10 @@ namespace PassKeyp
             // 
             this.lblUsernames.AutoSize = true;
             this.lblUsernames.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblUsernames.Location = new System.Drawing.Point(360, 72);
-            this.lblUsernames.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblUsernames.Location = new System.Drawing.Point(720, 138);
+            this.lblUsernames.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUsernames.Name = "lblUsernames";
-            this.lblUsernames.Size = new System.Drawing.Size(106, 24);
+            this.lblUsernames.Size = new System.Drawing.Size(215, 44);
             this.lblUsernames.TabIndex = 20;
             this.lblUsernames.Text = "Usernames";
             // 
@@ -136,19 +128,20 @@ namespace PassKeyp
             // 
             this.lblPasswords.AutoSize = true;
             this.lblPasswords.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblPasswords.Location = new System.Drawing.Point(596, 72);
-            this.lblPasswords.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPasswords.Location = new System.Drawing.Point(1192, 138);
+            this.lblPasswords.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPasswords.Name = "lblPasswords";
-            this.lblPasswords.Size = new System.Drawing.Size(101, 24);
+            this.lblPasswords.Size = new System.Drawing.Size(205, 44);
             this.lblPasswords.TabIndex = 21;
             this.lblPasswords.Text = "Passwords";
             // 
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(257, 393);
+            this.btnSave.Location = new System.Drawing.Point(174, 756);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(99, 33);
+            this.btnSave.Size = new System.Drawing.Size(198, 63);
             this.btnSave.TabIndex = 22;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -156,9 +149,9 @@ namespace PassKeyp
             // 
             // FilePage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1600, 865);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lblPasswords);
             this.Controls.Add(this.lblUsernames);
@@ -167,8 +160,8 @@ namespace PassKeyp
             this.Controls.Add(this.lstUsernames);
             this.Controls.Add(this.lstWebsites);
             this.Controls.Add(this.btnSort);
-            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAddNew);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "FilePage";
             this.Text = "FIlePage";
             this.Load += new System.EventHandler(this.FilePage_Load);
@@ -178,7 +171,6 @@ namespace PassKeyp
         }
 
         #endregion
-        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnAddNew;
         private System.Windows.Forms.Button btnSort;
         private System.Windows.Forms.ListBox lstWebsites;

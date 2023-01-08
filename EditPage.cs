@@ -17,7 +17,16 @@ namespace PassKeyp
     public partial class EditPage : Form
     {
         public List<Login> Logins;
+
         public Login toedit;
+
+        //Delegate
+        public delegate void LoginHandler(object sender, UpdateLoginEventArgs e);
+
+        //Event for Delegate 
+        //Type CustomersHandler matches the Delegate above
+        //UpdateCustomers is the variable used by Form1
+        public event LoginHandler UpdateLogins;
 
         public EditPage(Login toEdit)
         {
@@ -30,6 +39,13 @@ namespace PassKeyp
         private void btnSave_Click(object sender, EventArgs e)
         {
             Logins[Logins.IndexOf(toedit)] = new Login(txtWebsite.Text, txtUsername.Text, txtPassword.Text);
+            //Event Class which is used with the Delegate
+            //This helps us pass the changes to the ArrayList Customers to the class 
+            //and Retrieved from Form1 "CustomerUpdate" method
+            UpdateLoginEventArgs args = new UpdateLoginEventArgs(Logins);
+
+            //Event declared above
+            UpdateLogins(this, args);
             this.Close();
         }
 
@@ -63,6 +79,21 @@ namespace PassKeyp
             this.txtWebsite.Text = toedit.Website;
             this.txtUsername.Text = toedit.Username;
             this.txtPassword.Text = toedit.Password;
+        }
+
+        private void lblFilename_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            Logins.Remove(toedit);
+            UpdateLoginEventArgs args = new UpdateLoginEventArgs(Logins);
+
+            //Event declared above
+            UpdateLogins(this, args);
+            this.Close();
         }
     }
 }
