@@ -34,7 +34,7 @@ namespace PassKeyp
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.lblPassword = new System.Windows.Forms.Label();
-            this.lblFilename = new System.Windows.Forms.Label();
+            this.lblUsername = new System.Windows.Forms.Label();
             this.lblWebsite = new System.Windows.Forms.Label();
             this.txtWebsite = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
@@ -43,28 +43,25 @@ namespace PassKeyp
             // txtUsername
             // 
             this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(484, 329);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtUsername.Location = new System.Drawing.Point(242, 171);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(730, 58);
+            this.txtUsername.Size = new System.Drawing.Size(367, 33);
             this.txtUsername.TabIndex = 18;
             // 
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(484, 423);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtPassword.Location = new System.Drawing.Point(242, 220);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(730, 58);
+            this.txtPassword.Size = new System.Drawing.Size(367, 33);
             this.txtPassword.TabIndex = 17;
             // 
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(192, 706);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnCancel.Location = new System.Drawing.Point(96, 367);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(150, 63);
+            this.btnCancel.Size = new System.Drawing.Size(75, 33);
             this.btnCancel.TabIndex = 16;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -73,10 +70,9 @@ namespace PassKeyp
             // btnCreate
             // 
             this.btnCreate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreate.Location = new System.Drawing.Point(1214, 706);
-            this.btnCreate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnCreate.Location = new System.Drawing.Point(607, 367);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(150, 63);
+            this.btnCreate.Size = new System.Drawing.Size(75, 33);
             this.btnCreate.TabIndex = 15;
             this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = true;
@@ -86,58 +82,53 @@ namespace PassKeyp
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(282, 429);
-            this.lblPassword.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblPassword.Location = new System.Drawing.Point(141, 223);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(185, 51);
+            this.lblPassword.Size = new System.Drawing.Size(95, 25);
             this.lblPassword.TabIndex = 14;
             this.lblPassword.Text = "Password:";
             // 
-            // lblFilename
+            // lblUsername
             // 
-            this.lblFilename.AutoSize = true;
-            this.lblFilename.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFilename.Location = new System.Drawing.Point(282, 335);
-            this.lblFilename.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.lblFilename.Name = "lblFilename";
-            this.lblFilename.Size = new System.Drawing.Size(181, 51);
-            this.lblFilename.TabIndex = 13;
-            this.lblFilename.Text = "Filename:";
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.Location = new System.Drawing.Point(141, 174);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(101, 25);
+            this.lblUsername.TabIndex = 13;
+            this.lblUsername.Text = "Username:";
             // 
             // lblWebsite
             // 
             this.lblWebsite.AutoSize = true;
             this.lblWebsite.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWebsite.Location = new System.Drawing.Point(296, 240);
-            this.lblWebsite.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblWebsite.Location = new System.Drawing.Point(148, 125);
             this.lblWebsite.Name = "lblWebsite";
-            this.lblWebsite.Size = new System.Drawing.Size(175, 51);
+            this.lblWebsite.Size = new System.Drawing.Size(88, 25);
             this.lblWebsite.TabIndex = 12;
             this.lblWebsite.Text = "Website: ";
             // 
             // txtWebsite
             // 
             this.txtWebsite.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtWebsite.Location = new System.Drawing.Point(484, 235);
-            this.txtWebsite.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtWebsite.Location = new System.Drawing.Point(242, 122);
             this.txtWebsite.Name = "txtWebsite";
-            this.txtWebsite.Size = new System.Drawing.Size(730, 58);
+            this.txtWebsite.Size = new System.Drawing.Size(367, 33);
             this.txtWebsite.TabIndex = 19;
             // 
             // AddNewPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1600, 865);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.txtWebsite);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.lblPassword);
-            this.Controls.Add(this.lblFilename);
+            this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.lblWebsite);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "AddNewPage";
             this.Text = "AddNewPage";
             this.Load += new System.EventHandler(this.AddNewPage_Load);
@@ -153,7 +144,7 @@ namespace PassKeyp
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.Label lblFilename;
+        private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblWebsite;
         private System.Windows.Forms.TextBox txtWebsite;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;

@@ -124,6 +124,7 @@ namespace PassKeyp
             this.txtFileLocation.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFileLocation.Location = new System.Drawing.Point(240, 108);
             this.txtFileLocation.Name = "txtFileLocation";
+            this.txtFileLocation.ReadOnly = true;
             this.txtFileLocation.Size = new System.Drawing.Size(367, 33);
             this.txtFileLocation.TabIndex = 12;
             // 

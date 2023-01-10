@@ -25,6 +25,8 @@ namespace PassKeyp
 
         public int previousPasswordIndex;
 
+        public bool elseclick { get; set; }
+
         public FilePage(string filepath, string password, List<Login> logins)
         {
             InitializeComponent();
@@ -47,6 +49,11 @@ namespace PassKeyp
         //sends user to add new page
         private void btnAddNew_Click(object sender, EventArgs e)
         {
+            elseclick = true;
+            lstUsernames.Enabled = false;
+            lstPasswords.Enabled = false;
+            lstWebsites.Enabled = false;
+
             AddNewPage myForm = new AddNewPage();
             myForm.Logins = this.Logins;
             //Access the Event which is used by the Delegate
@@ -64,6 +71,10 @@ namespace PassKeyp
             lstWebsites.SelectedIndex = -1;
             lstUsernames.SelectedIndex = -1;
             lstPasswords.SelectedIndex = -1;
+
+            lstUsernames.Enabled = true;
+            lstPasswords.Enabled = true;
+            lstWebsites.Enabled = true;
         }
 
         //Ensures User can't mess with the form
@@ -98,6 +109,7 @@ namespace PassKeyp
             previousWebsiteIndex = 1;
             previousUsernameIndex = 1;
             previousPasswordIndex = 1;
+            elseclick = false;
         }
 
         private void PopulateLogins()
@@ -127,6 +139,10 @@ namespace PassKeyp
 
         private void btnSort_Click(object sender, EventArgs e)
         {
+            elseclick = true;
+            lstUsernames.Enabled = false;
+            lstPasswords.Enabled = false;
+            lstWebsites.Enabled = false;
             //calls merge to sort the array
             Logins = Merge(Logins, 0, Logins.Count - 1);
 
@@ -136,6 +152,10 @@ namespace PassKeyp
             lstWebsites.SelectedIndex = -1;
             lstUsernames.SelectedIndex = -1;
             lstPasswords.SelectedIndex = -1;
+
+            lstUsernames.Enabled = true;
+            lstPasswords.Enabled = true;
+            lstWebsites.Enabled = true;
         }
 
         //implements merge sort
@@ -201,6 +221,7 @@ namespace PassKeyp
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            elseclick = true;
             lstUsernames.Enabled = false;
             lstPasswords.Enabled = false;
             lstWebsites.Enabled = false;
@@ -224,32 +245,44 @@ namespace PassKeyp
                 return;
             }
 
-            else if(previousWebsiteIndex == lstWebsites.SelectedIndex)
+            /* else if(previousWebsiteIndex == lstWebsites.SelectedIndex)
             {
                 Console.WriteLine("Two");
                 return;
             }
-            else if (opentimes > 4)
+            */
+            else if (opentimes > 1)
             {
                 Console.WriteLine("Three");
                 Console.WriteLine(opentimes);
                 opentimes = 0;
                 return;
             }
-
+            /*
             else if(lstWebsites.SelectedIndex == lstUsernames.SelectedIndex || lstWebsites.SelectedIndex == lstPasswords.SelectedIndex)
             {
                 Console.WriteLine("Four");
                 return;
+            } */
+
+            else if (elseclick)
+            {
+                elseclick = false;
+                return;
             }
             previousWebsiteIndex = lstWebsites.SelectedIndex;
             opentimes++;
+            elseclick = true;
+
 
             Console.WriteLine("five");
             Console.WriteLine(opentimes);
             //Console.WriteLine(lstWebsites.SelectedIndex);
             //Console.WriteLine(this.Logins[lstWebsites.SelectedIndex].ToString());
 
+            lstUsernames.Enabled = false;
+            lstPasswords.Enabled = false;
+            lstWebsites.Enabled = false;
 
             //send user to edit page
             EditPage myForm = new EditPage(this.Logins[lstWebsites.SelectedIndex]);
@@ -260,43 +293,14 @@ namespace PassKeyp
             lstWebsites.SelectedIndex = -1;
             lstUsernames.SelectedIndex = -1;
             lstPasswords.SelectedIndex = -1;
+
+            lstUsernames.Enabled = true;
+            lstPasswords.Enabled = true;
+            lstWebsites.Enabled = true;
         }
 
         private void lstUsernames_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lstUsernames.SelectedIndex == -1 || opentimes == 0)
-            {
-                opentimes++;
-                previousUsernameIndex = lstUsernames.SelectedIndex;
-                return;
-            }
-
-            else if (previousUsernameIndex == lstUsernames.SelectedIndex)
-            {
-                return;
-            }
-            else if (opentimes > 4)
-            {
-                opentimes = 0;
-                return;
-            }
-            else if(lstUsernames.SelectedIndex == lstWebsites.SelectedIndex || lstUsernames.SelectedIndex == lstPasswords.SelectedIndex)
-            {
-                return;
-            }
-            previousUsernameIndex = lstUsernames.SelectedIndex;
-            opentimes++;
-
-            Console.WriteLine(lstUsernames.SelectedIndex);
-            Console.WriteLine(this.Logins[lstUsernames.SelectedIndex].ToString());
-
-
-            //send user to edit page
-            EditPage myForm = new EditPage(this.Logins[lstUsernames.SelectedIndex]);
-            myForm.Logins = this.Logins;
-            myForm.UpdateLogins += new EditPage.LoginHandler(LoginsUpdate);
-            myForm.ShowDialog();
-            this.PopulateLogins();
             lstWebsites.SelectedIndex = -1;
             lstUsernames.SelectedIndex = -1;
             lstPasswords.SelectedIndex = -1;
@@ -304,41 +308,6 @@ namespace PassKeyp
 
         private void lstPasswords_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lstPasswords.SelectedIndex == -1 || opentimes == 0)
-            {
-                opentimes++;
-                previousPasswordIndex = lstPasswords.SelectedIndex;
-                return;
-            }
-
-            else if (previousPasswordIndex == lstPasswords.SelectedIndex)
-            {
-                return;
-            }
-
-            else if (opentimes > 4)
-            {
-                opentimes = 0;
-                return;
-            }
-
-            else if (lstPasswords.SelectedIndex == lstUsernames.SelectedIndex || lstPasswords.SelectedIndex == lstWebsites.SelectedIndex)
-            {
-                return;
-            }
-            previousPasswordIndex = lstPasswords.SelectedIndex;
-            opentimes++;
-
-            Console.WriteLine(lstPasswords.SelectedIndex);
-            Console.WriteLine(this.Logins[lstPasswords.SelectedIndex].ToString());
-
-
-            //send user to edit page
-            EditPage myForm = new EditPage(this.Logins[lstPasswords.SelectedIndex]);
-            myForm.Logins = this.Logins;
-            myForm.UpdateLogins += new EditPage.LoginHandler(LoginsUpdate);
-            myForm.ShowDialog();
-            this.PopulateLogins();
             lstWebsites.SelectedIndex = -1;
             lstUsernames.SelectedIndex = -1;
             lstPasswords.SelectedIndex = -1;
