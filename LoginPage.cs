@@ -28,21 +28,11 @@ namespace PassKeyp
             int size = -1;
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
-            if (result == DialogResult.OK) // Test result.
-            {
-                string file = openFileDialog1.FileName;
-                try
-                {
-                    string text = File.ReadAllText(file);
-                    size = text.Length;
-                    this.txtFileLocation.Text = file; // <-- file location is added to text box
-                }
-                catch (IOException)
-                {
-                }
-            }
+            string file = openFileDialog1.FileName;
+            txtFileLocation.Text = file;
+            
             Console.WriteLine(size); // <-- Shows file size in debugging mode.
-            Console.WriteLine(result); // <-- For debugging use.
+             // <-- For debugging use.
         }
 
         //sends user to add new page

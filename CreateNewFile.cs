@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,8 +28,8 @@ namespace PassKeyp
             //if all fields are filled in, create new file
             if(txtFilename.Text != "" && txtPassword.Text != "")
             {
-                string path = txtFileLocation.Text + "\\" + txtFilename.Text + ".txt";
-                using (StreamWriter sw = File.CreateText(path));
+                string path = txtFileLocation.Text;
+                ZipFile.CreateFromDirectory(path, path + "\\" + txtFilename.Text + ".zip");
                 FilePage myForm = new FilePage(path, txtPassword.Text, Logins);
                 this.Hide();
                 myForm.ShowDialog();
