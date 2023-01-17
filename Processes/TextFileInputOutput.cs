@@ -27,7 +27,8 @@ namespace HowTo.Processes
                         while ((line = rdr.ReadLine()) != null)
                         {
                             string[] arr = new string[3];
-                            arr = line.Split(' ');
+                            arr = line.Split(',');
+                            Console.WriteLine(arr[0] + "," + arr[1] + "," + arr[2]);
 
                             //Add data to the Customers Model
                             login.Add(new Login()
@@ -63,8 +64,8 @@ namespace HowTo.Processes
                 {
                     foreach (var d in data)
                     {
-                        writer.WriteLine(d.ToString());
-                        Console.WriteLine(d.ToString());
+                        writer.WriteLine(d.SaveLogins() + ",");
+                        Console.WriteLine(d.SaveLogins());
                     }
                 }
             }
