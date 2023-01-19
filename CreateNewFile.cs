@@ -28,9 +28,17 @@ namespace PassKeyp
             //if all fields are filled in, create new file
             if(txtFilename.Text != "" && txtPassword.Text != "")
             {
-                string path = txtFileLocation.Text;
-                ZipFile.CreateFromDirectory(path, path + "\\" + txtFilename.Text + ".zip");
-                FilePage myForm = new FilePage(path, txtPassword.Text, Logins);
+                string path = txtFileLocation.Text + "\\" + txtFilename.Text + ".zip";
+                Console.WriteLine(txtFileLocation.Text);
+                ZipFile.CreateFromDirectory(txtFileLocation.Text, path);
+                using (FileStream zipToOpen = new FileStream(path, FileMode.Open))
+                {
+                    using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Update))
+                    {
+                        ZipArchiveEntry readmeEntry = archive.CreateEntry(txtFilename.Text + ".txt");
+                    }
+                }
+                FilePage myForm = new FilePage(txtFileLocation.Text, txtPassword.Text, Logins);
                 this.Hide();
                 myForm.ShowDialog();
                 this.Close();

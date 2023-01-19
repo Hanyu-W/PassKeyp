@@ -43,7 +43,7 @@ namespace HowTo.Processes
 
             try
             {
-                using (FileStream zipToOpen = new FileStream(@"c:\users\exampleuser\release.zip", FileMode.Open))
+                using (FileStream zipToOpen = new FileStream(file, FileMode.Open))
                 {
                     using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Update))
                     {
