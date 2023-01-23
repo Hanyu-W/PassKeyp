@@ -30,6 +30,7 @@ namespace PassKeyp
             {
                 string path = txtFileLocation.Text + "\\" + txtFilename.Text + ".zip";
                 Console.WriteLine(txtFileLocation.Text);
+                StreamWriter sw = File.CreateText(txtFileLocation.Text + "\\" + txtFilename.Text + ".txt");
                 ZipFile.CreateFromDirectory(txtFileLocation.Text, path);
                 using (FileStream zipToOpen = new FileStream(path, FileMode.Open))
                 {

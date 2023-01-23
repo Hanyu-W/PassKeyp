@@ -33,7 +33,9 @@ namespace PassKeyp
             Keyp.Pathname = filepath;
             //Gets the name of the file by taking the 
             //part of the path after the last backslash
-            Keyp.Filename = filepath.Substring(filepath.LastIndexOf("\\")+1);
+            //in .txt form
+            string tmp = filepath.Substring(filepath.LastIndexOf("\\")+1);
+            Keyp.Filename = tmp.Substring(0, tmp.IndexOf(".")) + ".txt";
             Console.WriteLine();
             this.Logins = logins;
         }

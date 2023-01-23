@@ -47,7 +47,13 @@ namespace HowTo.Processes
                 {
                     using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Update))
                     {
-                        ZipArchiveEntry readmeEntry = archive.GetEntry(file.Substring(file.LastIndexOf("\\") + 1));
+                        Console.WriteLine(file);
+                        Console.WriteLine(file.Substring(file.LastIndexOf("\\") + 1));
+                        string tmp = file.Substring(file.LastIndexOf("\\") + 1);
+                        string txtFilename = tmp.Substring(0, tmp.IndexOf(".")) + ".txt";
+                        Console.WriteLine(txtFilename);
+                        ZipArchiveEntry readmeEntry = archive.GetEntry(txtFilename);
+
                         using (StreamReader rdr = new StreamReader(readmeEntry.Open()))
                         {
                             while ((line = rdr.ReadLine()) != null)
@@ -80,11 +86,11 @@ namespace HowTo.Processes
         {
             try
             {
-                using (FileStream zipToOpen = new FileStream(Keyp.Pathname + Keyp.Filename + ".zip", FileMode.Open))
+                using (FileStream zipToOpen = new FileStream(Keyp.Pathname, FileMode.Open))
                 {
                     using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Update))
                     {
-                        ZipArchiveEntry readmeEntry = archive.CreateEntry(Keyp.Filename);
+                        ZipArchiveEntry readmeEntry = archive.GetEntry(Keyp.Filename);
                         using (StreamWriter writer = new StreamWriter(readmeEntry.Open()))
                         {
                             foreach (var d in data)
