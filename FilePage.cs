@@ -36,7 +36,6 @@ namespace PassKeyp
             //in .txt form
             string tmp = filepath.Substring(filepath.LastIndexOf("\\")+1);
             Keyp.Filename = tmp.Substring(0, tmp.IndexOf(".")) + ".txt";
-            Console.WriteLine();
             this.Logins = logins;
         }
 
@@ -99,12 +98,13 @@ namespace PassKeyp
             lblDataFor.Font = new Font("Segoe UI", 24);
             lblDataFor.Padding = new Padding(6);
             this.Controls.Add(lblDataFor);
+
             if(Logins.Count == 0)
             {
                 Logins = Login.GetLogins();
             }
-            Console.WriteLine(Logins);
             this.PopulateLogins();
+
             lstWebsites.SelectedIndex = -1;
             lstUsernames.SelectedIndex = -1;
             lstPasswords.SelectedIndex = -1;
@@ -118,7 +118,6 @@ namespace PassKeyp
         {
             //Use LINQ to get logins from the Login
             var websites = (from c in Logins select c.Website).ToList();
-            Console.WriteLine(websites.ToString());
             //Set the DataSource of the listbox to the logins  collection
             this.lstWebsites.DataSource = websites;
 
@@ -166,7 +165,6 @@ namespace PassKeyp
             if (left < right)
             {
                 int middle = left + (right - left) / 2;
-                Console.WriteLine(middle);
                 Merge(array, left, middle);
                 Merge(array, middle + 1, right);
                 Mergesort(array, left, middle, right);
@@ -180,8 +178,6 @@ namespace PassKeyp
         {
             var leftArrayLength = middle - left + 1;
             var rightArrayLength = right - middle;
-            Console.WriteLine(leftArrayLength);
-            Console.WriteLine(rightArrayLength);
             var leftTempArray = new Login[leftArrayLength];
             var rightTempArray = new Login[rightArrayLength];
 
@@ -215,10 +211,6 @@ namespace PassKeyp
             {
                 array[k++] = rightTempArray[j++];
             }
-            foreach (var a in array)
-            {
-                Console.WriteLine(a.Website);
-            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -241,31 +233,16 @@ namespace PassKeyp
         {
             if (lstWebsites.SelectedIndex == -1 || opentimes == 0)
             {
-                Console.WriteLine("One");
                 opentimes++;
                 previousWebsiteIndex = lstWebsites.SelectedIndex;
                 return;
             }
 
-            /* else if(previousWebsiteIndex == lstWebsites.SelectedIndex)
-            {
-                Console.WriteLine("Two");
-                return;
-            }
-            */
             else if (opentimes > 1)
             {
-                Console.WriteLine("Three");
-                Console.WriteLine(opentimes);
                 opentimes = 0;
                 return;
             }
-            /*
-            else if(lstWebsites.SelectedIndex == lstUsernames.SelectedIndex || lstWebsites.SelectedIndex == lstPasswords.SelectedIndex)
-            {
-                Console.WriteLine("Four");
-                return;
-            } */
 
             else if (elseclick)
             {
@@ -275,12 +252,6 @@ namespace PassKeyp
             previousWebsiteIndex = lstWebsites.SelectedIndex;
             opentimes++;
             elseclick = true;
-
-
-            Console.WriteLine("five");
-            Console.WriteLine(opentimes);
-            //Console.WriteLine(lstWebsites.SelectedIndex);
-            //Console.WriteLine(this.Logins[lstWebsites.SelectedIndex].ToString());
 
             lstUsernames.Enabled = false;
             lstPasswords.Enabled = false;
