@@ -22,16 +22,51 @@ namespace PassKeyp
             InitializeComponent();
         }
 
+
+        private void PerformZip()
+        {
+            string path = txtFileLocation.Text + "\\" + txtFilename.Text + ".txt";
+
+            using (StreamWriter Strwriter = new StreamWriter(path))
+            {
+                Strwriter.Write("Hello");
+                Strwriter.Flush();
+                Strwriter.Close();
+                Strwriter.Dispose();
+            }
+
+            string zippath = txtFileLocation.Text + "\\" + txtFilename.Text + ".zip";
+
+            using (ZipArchive archive = ZipFile.Open(zippath, ZipArchiveMode.Update))
+            {
+                archive.CreateEntryFromFile(zippath, path);
+                archive.CreateEntry(zippath);
+                archive.GetEntry(path);
+            }
+
+            /*
+            using (ZipFile zip = new ZipFile())
+            {
+                zip.AddFile(path);
+                zip.Save(path + ".zip");
+            }
+            */
+        }
+
         //sends user to file page
         private void btnCreate_Click(object sender, EventArgs e)
         {
             //if all fields are filled in, create new file
             if(txtFilename.Text != "" && txtPassword.Text != "")
             {
+                this.PerformZip();
+
                 string path = txtFileLocation.Text + "\\" + txtFilename.Text + ".zip";
                 Console.WriteLine(txtFileLocation.Text);
+                
                 //using (StreamWriter sw = File.CreateText(txtFileLocation.Text + "\\" + txtFilename.Text + ".txt")) ;
                 ZipFile.CreateFromDirectory(txtFileLocation.Text, path);
+
                 using (FileStream zipToOpen = new FileStream(path, FileMode.OpenOrCreate))
                 {
                     using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Update))
@@ -39,7 +74,9 @@ namespace PassKeyp
                         ZipArchiveEntry readmeEntry = archive.CreateEntry(txtFilename.Text + ".txt");
                     }
                 }
+                
                 FilePage myForm = new FilePage(txtFileLocation.Text, txtPassword.Text, Logins);
+                
                 this.Hide();
                 myForm.ShowDialog();
                 this.Close();
