@@ -1,15 +1,11 @@
 ﻿using PassKeyp.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.WebRequestMethods;
 
 namespace PassKeyp
 {
@@ -17,74 +13,68 @@ namespace PassKeyp
     {
         public List<Login> Logins = new List<Login>();
 
+        string sPath = string.Empty;
+        string sZip = string.Empty;
+        string sFile = string.Empty;
+
         public CreateNewFile()
         {
             InitializeComponent();
         }
 
-
-        private void PerformZip()
+        private void CreateFile()
         {
-            string path = txtFileLocation.Text + "\\" + txtFilename.Text + ".txt";
+            string sloc = sPath + "\\" + sFile;
 
-            using (StreamWriter Strwriter = new StreamWriter(path))
+            if (System.IO.File.Exists(sloc))
+                System.IO.File.Delete(sloc);
+
+            using (StreamWriter Strwriter = new StreamWriter(sloc))
             {
                 Strwriter.Write("Hello");
                 Strwriter.Flush();
                 Strwriter.Close();
                 Strwriter.Dispose();
             }
-
-            string zippath = txtFileLocation.Text + "\\" + txtFilename.Text + ".zip";
-
-            using (ZipArchive archive = ZipFile.Open(zippath, ZipArchiveMode.Update))
-            {
-                archive.CreateEntryFromFile(zippath, path);
-                archive.CreateEntry(zippath);
-                archive.GetEntry(path);
-            }
-
-            /*
-            using (ZipFile zip = new ZipFile())
-            {
-                zip.AddFile(path);
-                zip.Save(path + ".zip");
-            }
-            */
         }
 
+        private void PerformZip()
+        {
+            //Delete if File Exists
+            if (System.IO.File.Exists(sZip))
+                System.IO.File.Delete(sZip);
+
+            //Add file to Zip File
+            using (var archive = ZipFile.Open(sZip, ZipArchiveMode.Create))
+            {
+                archive.CreateEntryFromFile(sPath + "\\" + sFile, sFile, CompressionLevel.Optimal);
+            }
+        }
         //sends user to file page
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            //if all fields are filled in, create new file
-            if(txtFilename.Text != "" && txtPassword.Text != "")
+            if (!PerformValidation())
+                return;
+
+            sFile = this.txtFilename.Text.Trim() + ".txt";
+            sPath = this.txtFileLocation.Text.Trim();
+            sZip = sPath + "\\" + this.txtFilename.Text.Trim() + ".zip";
+
+            this.CreateFile();
+            this.PerformZip();
+            
+            FilePage myForm = new FilePage(txtFileLocation.Text, txtPassword.Text, Logins);
+                
+            this.Hide();
+            myForm.ShowDialog();
+            this.Close();
+        }
+
+        private bool PerformValidation()
+        {
+            if (String.IsNullOrEmpty(this.txtFilename.Text.Trim()))
             {
-                this.PerformZip();
-
-                string path = txtFileLocation.Text + "\\" + txtFilename.Text + ".zip";
-                Console.WriteLine(txtFileLocation.Text);
-                
-                //using (StreamWriter sw = File.CreateText(txtFileLocation.Text + "\\" + txtFilename.Text + ".txt")) ;
-                ZipFile.CreateFromDirectory(txtFileLocation.Text, path);
-
-                using (FileStream zipToOpen = new FileStream(path, FileMode.OpenOrCreate))
-                {
-                    using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Update))
-                    {
-                        ZipArchiveEntry readmeEntry = archive.CreateEntry(txtFilename.Text + ".txt");
-                    }
-                }
-                
-                FilePage myForm = new FilePage(txtFileLocation.Text, txtPassword.Text, Logins);
-                
-                this.Hide();
-                myForm.ShowDialog();
-                this.Close();
-            }
-
-            //if no filename, give error
-            if(txtFilename.Text == "")
-            {
+                //if no filename, give error
                 Label Filenamewarning = new Label();
                 Filenamewarning.Text = "Error! No filename!";
                 Filenamewarning.Location = new Point(200, 400);
@@ -94,11 +84,12 @@ namespace PassKeyp
                 Filenamewarning.Padding = new Padding(6);
                 this.Controls.Add(Filenamewarning);
                 Console.WriteLine(Filenamewarning.Text);
-            }
 
-            //if no password, give error
-            if (txtPassword.Text == "")
+                return false;
+            }
+            else if (String.IsNullOrEmpty(this.txtPassword.Text.Trim()))
             {
+                //if no password, give error
                 Label Passwordwarning = new Label();
                 Passwordwarning.Text = "Error! No Password!";
                 Passwordwarning.Location = new Point(400, 400);
@@ -108,7 +99,11 @@ namespace PassKeyp
                 Passwordwarning.Padding = new Padding(6);
                 this.Controls.Add(Passwordwarning);
                 Console.WriteLine(Passwordwarning.Text);
+
+                return false;
             }
+
+            return true;
         }
 
         //sends user back to login page
