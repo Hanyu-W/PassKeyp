@@ -63,7 +63,7 @@ namespace PassKeyp
             this.CreateFile();
             this.PerformZip();
             
-            FilePage myForm = new FilePage(txtFileLocation.Text, txtPassword.Text, Logins);
+            FilePage myForm = new FilePage(sZip, txtPassword.Text, Logins);
                 
             this.Hide();
             myForm.ShowDialog();

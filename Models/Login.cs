@@ -44,7 +44,7 @@ namespace PassKeyp.Models
 
         public string SaveLogins()
         {
-            return Website + "," + Username + "," + Password;
+            return Website + "," + Username + "," + Password + ",";
         }
 
     }

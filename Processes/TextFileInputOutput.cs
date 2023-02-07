@@ -95,7 +95,7 @@ namespace HowTo.Processes
                         {
                             foreach (var d in data)
                             {
-                                writer.WriteLine(d.SaveLogins() + ",");
+                                writer.WriteLine(d.SaveLogins());
                                 Console.WriteLine(d.SaveLogins());
                             }
                         }
