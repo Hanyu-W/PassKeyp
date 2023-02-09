@@ -16,31 +16,6 @@ namespace HowTo.Processes
             login = new List<Login>();
             string line = string.Empty;
 
-            /*//Check if the file exists
-               if (File.Exists(file))
-               {
-                   ZipFile.ExtractToDirectory(file, file.Substring(0, file.LastIndexOf("\\")));
-                   //Create a Stream Reader
-                   using (StreamReader rdr = new StreamReader(file))
-                   {
-                       //Read the data in the file
-                       while ((line = rdr.ReadLine()) != null)
-                       {
-                           string[] arr = new string[3];
-                           arr = line.Split(',');
-                           Console.WriteLine(arr[0] + "," + arr[1] + "," + arr[2]);
-
-                           //Add data to the Customers Model
-                           login.Add(new Login()
-                           {
-                               Website = arr[0],
-                               Username = arr[1],
-                               Password = arr[2]
-                           });;
-                       }
-                   }
-               } */
-
             try
             {
                 using (FileStream zipToOpen = new FileStream(file, FileMode.Open))
@@ -101,17 +76,6 @@ namespace HowTo.Processes
                         }
                     }
                 }
-                /*//We want to 
-                FileStream stream = new FileStream(file, FileMode.OpenOrCreate, FileAccess.Write);
-
-                using (StreamWriter writer = new StreamWriter(stream, Encoding.UTF8))
-                {
-                    foreach (var d in data)
-                    {
-                        writer.WriteLine(d.SaveLogins() + ",");
-                        Console.WriteLine(d.SaveLogins());
-                    }
-                }*/
             }
             catch (Exception ex)
             {
